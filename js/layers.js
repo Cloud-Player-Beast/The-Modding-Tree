@@ -1,6 +1,6 @@
-addLayer("$", {
-    name: "$", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "R-$", // This appears on the layer's node. Default is the id with the first letter capitalized
+addLayer("注册", {
+    name: "未知", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "注册", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -8,8 +8,8 @@ addLayer("$", {
     }},
     color: "#FFFF6F",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "$", // Name of prestige currency
-    baseResource: "时间", // Name of resource prestige is based on
+    resource: "注册", // Name of prestige currency
+    baseResource: "注册", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0, // Prestige currency exponent

@@ -1,7 +1,7 @@
 let modInfo = {
-	name: "游戏树",
+	name: "Galacitc Era 树",
 	id: "mymod",
-	author: "辉影神秘（mysterious_124）",
+	author: "Cloud_Player_Beast",
 	pointsName: "时间",
 	modFiles: ["layers.js", "tree.js"],
 
