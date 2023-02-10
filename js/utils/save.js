@@ -197,7 +197,7 @@ function load() {
 		loadOptions();
 	}
 
-	if (options.offlineProd) {
+	if (player.offlineProd) {
 		if (player.offTime === undefined)
 			player.offTime = { remain: 0 };
 		player.offTime.remain += (Date.now() - player.time) / 1000;

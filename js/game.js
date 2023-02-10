@@ -3,7 +3,7 @@ var needCanvasUpdate = true;
 
 // Don't change this
 const TMT_VERSION = {
-	tmtNum: "2.6.5.1",
+	tmtNum: "2.6.4.3",
 	tmtName: "Fixed Reality"
 }
 
@@ -94,8 +94,7 @@ function shouldNotify(layer){
 	if (isPlainObject(tmp[layer].tabFormat)) {
 		for (subtab in tmp[layer].tabFormat){
 			if (subtabShouldNotify(layer, 'mainTabs', subtab)) {
-				tmp[layer].trueGlowColor = tmp[layer].tabFormat[subtab].glowColor || defaultGlow
-
+				tmp[layer].trueGlowColor = tmp[layer].tabFormat[subtab].glowColor
 				return true
 			}
 		}
@@ -246,7 +245,7 @@ function resetRow(row) {
 
 function startChallenge(layer, x) {
 	let enter = false
-	if (!player[layer].unlocked || !tmp[layer].challenges[x].unlocked) return
+	if (!player[layer].unlocked) return
 	if (player[layer].activeChallenge == x) {
 		completeChallenge(layer, x)
 		Vue.set(player[layer], "activeChallenge", null)
@@ -384,7 +383,7 @@ function gameLoop(diff) {
 }
 
 function hardReset(resetOptions) {
-	if (!confirm("Are you sure you want to do this? You will lose all your progress!")) return
+	if (!confirm("你确定要硬复位吗？你会丢失所有数据！")) return
 	player = null
 	if(resetOptions) options = null
 	save(true);
@@ -408,7 +407,7 @@ var interval = setInterval(function() {
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
 		}
-		if (!options.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
+		if (!player.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
 	}
 	if (player.devSpeed) diff *= player.devSpeed
 	player.time = now
