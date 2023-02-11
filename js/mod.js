@@ -1,30 +1,26 @@
 let modInfo = {
-	name: "Galacitc Era 树",
+	name: "The ??? Tree",
 	id: "mymod",
-	author: "Cloud_Player_Beast",
+	author: "nobody",
 	pointsName: "时间",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (0), // Used for hard resets and new players
-	offlineLimit: 0,  // In hours
+	initialStartPoints: new Decimal (0.1), // Used for hard resets and new players
+	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1.1",
+	num: "0.0",
 	name: "Literally nothing",
 }
 
-let changelog = `<h1>更新日志:</h1><br>
-<h2>虚拟与现实？</h2><br>
-	<h3>v0.1.1</h3><br>
-	    - “w”价格公式放缓，“原木！”，“游戏树真的太棒了（强调）！”公式得到了改进 <br>
-		- “w”层新增2个升级<br>
-	<h3>v0.1</h3><br>
-		- 增加 “$”层。<br>
-		- 增加 “w”层。`
+let changelog = `<h1>Changelog:</h1><br>
+	<h3>v0.0</h3><br>
+		- Added things.<br>
+		- Added stuff.`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -38,20 +34,15 @@ function getStartPoints(){
 
 // Determines if it should show points/sec
 function canGenPoints(){
-	return hasUpgrade("$", 11);
+	return true
 }
 
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
-	
-	let gain = new Decimal(0.5)
-	if (hasUpgrade('$', 12)) gain = new Decimal(0.6)
-	if (hasUpgrade('$', 13)) gain = new Decimal(0.75)
-	if (hasUpgrade('$', 13)) gain = new Decimal(0.875)
-	if (hasUpgrade('w', 11)) gain = gain.times(upgradeEffect('w', 11))
-	if (hasUpgrade('w', 13)) gain = gain.times(upgradeEffect('w', 13))
+
+	let gain = new Decimal(10000)
 	return gain
 }
 
@@ -65,7 +56,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("1"))
 }
 
 
